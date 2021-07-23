@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Code/Main.cs" type="Script" id=1]
+[ext_resource path="res://Scenes/Mobs/MobWalker.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Code/PathLinearMove.cs" type="Script" id=4]
+[ext_resource path="res://Scenes/Mobs/MobSwimmer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Mobs/MobFlier.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -1, -1, 0, 0, 0, 0, 479, 1, 0, 0, 0, 0, 480.275, 721.219, 0, 0, 0, 0, -0.869385, 721.276, 0, 0, 0, 0, -3.5, 360, 0, 0, 0, 0, -1, -1 )
+}
+
+[node name="Root" type="Node"]
+script = ExtResource( 1 )
+Mobs = [ ExtResource( 7 ), ExtResource( 6 ), ExtResource( 2 ) ]
+DirectionalJitter = 0.785
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 240, 540 )
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2( -1.10417, 23.9998 )
+rotation = 0.00416666
+v_offset = 25.0
+script = ExtResource( 4 )
+
+[node name="Panel_GUI" type="Panel" parent="."]
+margin_right = 125.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label_score" type="Label" parent="Panel_GUI"]
+margin_right = 125.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
