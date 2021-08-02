@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Code/Main.cs" type="Script" id=1]
-[ext_resource path="res://Scenes/Mobs/MobWalker.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Mobs/EnemySlow.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Code/PathLinearMove.cs" type="Script" id=4]
-[ext_resource path="res://Scenes/Mobs/MobSwimmer.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Scenes/Mobs/MobFlier.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/HUD.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Mobs/EnemyFast.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Mobs/EnemyMedium.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -41,16 +42,4 @@ rotation = 0.00416666
 v_offset = 25.0
 script = ExtResource( 4 )
 
-[node name="Panel_GUI" type="Panel" parent="."]
-margin_right = 125.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label_score" type="Label" parent="Panel_GUI"]
-margin_right = 125.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="HUD" parent="." instance=ExtResource( 5 )]

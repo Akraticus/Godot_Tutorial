@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Code/HUD.cs" type="Script" id=2]
+[ext_resource path="res://fonts/Xolonium_Regular_Font.tres" type="DynamicFont" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 1 )
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="StartButton" type="Button" parent="."]
+margin_left = 158.472
+margin_top = 477.808
+margin_right = 338.472
+margin_bottom = 561.808
+custom_fonts/font = SubResource( 1 )
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MessageLabel" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 73.8141
+margin_bottom = 232.814
+custom_fonts/font = ExtResource( 3 )
+text = "Message Placeholder"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

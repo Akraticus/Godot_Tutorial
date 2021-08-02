@@ -28,8 +28,8 @@ public class Player : Area2D
     private void OnBodyEntered(Node body)
     {
         Hide();
-        EmitSignal(nameof(Hit));
         GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
+        EmitSignal(nameof(Hit));
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -56,26 +56,26 @@ public class Player : Area2D
             velocity.y -= 1;
         }
 
-        var animatedSprites = GetNode<AnimatedSprite>("AnimatedSprite");
-        if (velocity.Length() <= 0)
-        {
-            animatedSprites.Stop();
-            return;
-        }
-
-        if (velocity.x != 0)
-        {
-            animatedSprites.FlipV = false;
-
-            animatedSprites.Animation = "walk";
-            animatedSprites.FlipH = velocity.x < 0;
-        } else if (velocity.y != 0)
-        {
-            animatedSprites.Animation = "up";
-            animatedSprites.FlipV = velocity.y > 0;
-        }
-        
-        animatedSprites.Play();
+        // var animatedSprites = GetNode<AnimatedSprite>("AnimatedSprite");
+        // if (velocity.Length() <= 0)
+        // {
+        //     animatedSprites.Stop();
+        //     return;
+        // }
+        //
+        // if (velocity.x != 0)
+        // {
+        //     animatedSprites.FlipV = false;
+        //
+        //     animatedSprites.Animation = "walk";
+        //     animatedSprites.FlipH = velocity.x < 0;
+        // } else if (velocity.y != 0)
+        // {
+        //     animatedSprites.Animation = "up";
+        //     animatedSprites.FlipV = velocity.y > 0;
+        // }
+        //
+        // animatedSprites.Play();
 
         velocity = velocity.Normalized();
         Position += velocity * delta * Speed;
